@@ -1,4 +1,6 @@
 package testinghibernate;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 /**
  *
@@ -11,6 +13,9 @@ public class TestingHibernate {
      */
     public static void main(String[] args) {
         System.out.println("I'm here!");
+        
+        SessionFactory sf = NewHibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
     }
     
 }
