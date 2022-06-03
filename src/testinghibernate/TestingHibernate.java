@@ -16,6 +16,17 @@ public class TestingHibernate {
         
         SessionFactory sf = NewHibernateUtil.getSessionFactory();
         Session s = sf.openSession();
+        
+        Transaction _transaction = s.beginTransaction();
+        List <Studentyi> students = s.createQuery("From Stydentyi").list();
+        
+        for(Studentyi student : students){
+            System.out.println(student.getImya());
+            student.setStatusDate(new Date());
+            s.saveOrUpdate(student);
+        }
+        s.flush();
+        _transaction.commit();
     }
     
 }
